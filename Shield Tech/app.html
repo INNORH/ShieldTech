@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Scam Shield · Dashboard</title>
+  <meta name="description" content="Check a job or learnership message, and see what other South African job seekers have reported.">
+  <meta name="theme-color" content="#0B1220">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/jss-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" media="print" onload="this.media='all'"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap">
+  <noscript><link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="workstation.css">
+</head>
+<body class="app-page">
+  <div class="backdrop" aria-hidden="true">
+    <div class="backdrop__glow backdrop__glow--a"></div>
+    <div class="backdrop__glow backdrop__glow--b"></div>
+    <div class="floatscape">
+      <span class="float-icon float-icon--1" style="--d:0s;--x:8%;--y:14%;--s:1.1">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4.8 5.5v6c0 4.8 3.2 9 7.2 10.5 4-1.5 7.2-5.7 7.2-10.5v-6L12 2.5Z"/><path d="m8.8 12 2.2 2.2 4.4-4.6"/></svg>
+      </span>
+      <span class="float-icon float-icon--2" style="--d:-2s;--x:78%;--y:18%;--s:0.9">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8.5 11V8a3.5 3.5 0 0 1 7 0v3"/></svg>
+      </span>
+      <span class="float-icon float-icon--3" style="--d:-4s;--x:18%;--y:68%;--s:1">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16.2 16.2 4 4"/></svg>
+      </span>
+      <span class="float-icon float-icon--4" style="--d:-1s;--x:86%;--y:62%;--s:1.05">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h7l3 3V19.5H7z"/><path d="M14 4.5v3h3"/><path d="M9.5 12h5M9.5 15h5"/></svg>
+      </span>
+      <span class="float-icon float-icon--5" style="--d:-3s;--x:62%;--y:82%;--s:0.85">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 4.8 6.4v5.8c0 4.4 3.1 8.2 7.2 9.3 4.1-1.1 7.2-4.9 7.2-9.3V6.4L12 3.5Z"/><path d="m9 12.2 2.1 2.1 4-4.2"/></svg>
+      </span>
+      <span class="float-icon float-icon--6" style="--d:-5s;--x:42%;--y:10%;--s:0.75">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 1.5"/></svg>
+      </span>
+      <span class="float-icon float-icon--7" style="--d:-2.5s;--x:6%;--y:42%;--s:0.95">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h16v11H4z"/><path d="M8 7.5V6a4 4 0 0 1 8 0v1.5"/></svg>
+      </span>
+      <span class="float-icon float-icon--8" style="--d:-6s;--x:90%;--y:38%;--s:0.8">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v4M12 16v4M4 12h4M16 12h4"/><circle cx="12" cy="12" r="3.2"/></svg>
+      </span>
+    </div>
+  </div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- slim bar, phones only -->
+  <div class="mobilebar">
+    <button class="mobilebar__btn" type="button" id="nav-toggle"
+            aria-expanded="false" aria-controls="sidebar" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+    <span class="mobilebar__title" id="mobilebar-title">Dashboard</span>
+  </div>
+
+  <div class="frame">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <div class="brand brand--tight">
+          <img class="brand__logo" src="assets/logo.svg" width="32" height="32" alt="">
+          <span class="brand__text">JOB SCAM SHIELD</span>
+        </div>
+        <button class="sidebar__close" type="button" id="nav-close" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="nav" aria-label="Sections">
+        <p class="nav__label">Menu</p>
+
+        <button class="nav__link" type="button" data-nav="dashboard" aria-current="page">
+          <svg class="nav__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 10.5 12 3l8 7.5V20a1 1 0 0 1-1 1h-5.2v-6.2H10.2V21H5a1 1 0 0 1-1-1v-9.5Z"/>
+          </svg>
+          <span class="nav__text">Dashboard</span>
+        </button>
+
+        <button class="nav__link" type="button" data-nav="check">
+          <svg class="nav__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="6.5"/>
+            <path d="m16.2 16.2 4.3 4.3"/>
+          </svg>
+          <span class="nav__text">Scam Scanner</span>
+        </button>
+
+        <button class="nav__link" type="button" data-nav="community">
+          <svg class="nav__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="9" cy="8" r="3"/>
+            <path d="M3.5 19c0-3 2.4-5 5.5-5s5.5 2 5.5 5"/>
+            <circle cx="17" cy="9" r="2.4"/>
+            <path d="M21.5 19c0-2.4-1.5-4.1-3.8-4.7"/>
+          </svg>
+          <span class="nav__text">Community</span>
+          <span class="nav__count" id="nav-count-community" aria-hidden="true">0</span>
+        </button>
+
+        <button class="nav__link" type="button" data-nav="history">
+          <svg class="nav__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="8"/>
+            <path d="M12 7.5V12l3 1.8"/>
+          </svg>
+          <span class="nav__text">History</span>
+          <span class="nav__count" id="nav-count-history" aria-hidden="true">0</span>
+        </button>
+
+        <button class="nav__link" type="button" data-nav="workstation">
+          <svg class="nav__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="3.5" y="4.5" width="17" height="12" rx="1.5"/>
+            <path d="M8 20.5h8M12 16.5v4"/>
+            <path d="M7.5 9h3M7.5 12h5"/>
+          </svg>
+          <span class="nav__text">Work Station</span>
+        </button>
+
+        <button class="nav__link" type="button" data-nav="analytics">
+          <svg class="nav__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4.5 19.5h15"/>
+            <path d="M7 16.5V10"/>
+            <path d="M12 16.5V7"/>
+            <path d="M17 16.5v-4.5"/>
+          </svg>
+          <span class="nav__text">Analytics</span>
+        </button>
+
+        <p class="nav__label nav__label--split">Account</p>
+
+        <button class="nav__link" type="button" data-nav="settings">
+          <svg class="nav__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 3.5v2.2M12 18.3v2.2M4.9 6.4l1.6 1.6M17.5 16l1.6 1.6M3.5 12h2.2M18.3 12h2.2M4.9 17.6l1.6-1.6M17.5 8l1.6-1.6"/>
+          </svg>
+          <span class="nav__text">Settings</span>
+        </button>
+      </nav>
+
+      <div class="sidebar__foot">
+        <button class="trust-panel" type="button" id="trust-open"
+                aria-label="Open your community reports">
+          <p class="trust-panel__label">Your reporter trust</p>
+          <span class="trust-chip" id="trust-chip" title="Your reporter trust level">
+            <span class="trust-chip__rank" id="trust-rank">1</span>
+            <span class="trust-chip__label" id="trust-label">New</span>
+          </span>
+          <p class="trust-panel__note">Confirmed reports raise your level.</p>
+        </button>
+
+        <button class="side-action" type="button" id="sign-out">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M9 5.5H5.8A1.3 1.3 0 0 0 4.5 6.8v10.4a1.3 1.3 0 0 0 1.3 1.3H9"/>
+            <path d="M14.5 12H21m0 0-3-3m3 3-3 3"/>
+          </svg>
+          <span>Sign out</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="sidebar-scrim" id="nav-scrim" hidden aria-hidden="true"></div>
+
+    <main class="shell" id="main">
+    <div class="banner" id="app-banner" role="alert" hidden></div>
+
+    <header class="topbar" aria-label="Account">
+      <div class="search" id="app-search">
+        <button class="search__toggle" type="button" id="search-toggle"
+                aria-expanded="false" aria-controls="search-panel"
+                aria-label="Open search">
+          <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="6.5"/>
+            <path d="m16.2 16.2 4 4"/>
+          </svg>
+        </button>
+        <div class="search__panel" id="search-panel" hidden>
+          <label class="sr-only" for="search-input">Search reports and history</label>
+          <input class="search__input" id="search-input" type="search"
+                 placeholder="Search reports and history…"
+                 autocomplete="off" spellcheck="false">
+          <button class="search__clear" type="button" id="search-clear" hidden
+                  aria-label="Clear search">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M7 7l10 10M17 7 7 17"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <p class="topbar__pulse" id="topbar-pulse" aria-live="polite"></p>
+
+      <div class="topbar__actions">
+        <button class="user-chip" type="button" id="user-chip" data-nav="settings"
+                aria-label="Open settings for your account">
+          <span class="user-chip__text">
+            <span class="user-chip__name" id="user-chip-name">Account</span>
+            <span class="user-chip__email" id="user-chip-email"></span>
+          </span>
+          <span class="user-chip__avatar" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <circle cx="12" cy="9" r="3.4"/>
+              <path d="M5.2 19.2c1.4-3.1 3.9-4.7 6.8-4.7s5.4 1.6 6.8 4.7"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ============ DASHBOARD ============ -->
+    <section class="view" id="view-dashboard" aria-labelledby="dash-heading">
+      <header class="page-header">
+        <p class="page-header__eyebrow">Overview</p>
+        <h1 class="title" id="dash-heading" tabindex="-1">Dashboard</h1>
+        <p class="subtitle" id="dash-pulse">Your overview for today.</p>
+      </header>
+
+      <div class="stat-grid" aria-label="Overview stats">
+        <button class="stat-card" type="button" data-nav="analytics" id="stat-reports">
+          <span class="stat-card__value" id="stat-reports-value">0</span>
+          <span class="stat-card__label">Scams reported</span>
+          <span class="stat-card__hint">Community reports</span>
+        </button>
+        <button class="stat-card" type="button" data-nav="analytics" id="stat-scans">
+          <span class="stat-card__value" id="stat-scans-value">0</span>
+          <span class="stat-card__label">Messages scanned</span>
+          <span class="stat-card__hint">On this device</span>
+        </button>
+        <button class="stat-card" type="button" data-nav="analytics" id="stat-live">
+          <span class="stat-card__value" id="stat-live-value">0</span>
+          <span class="stat-card__label">Live alerts</span>
+          <span class="stat-card__hint">Last 72 hours</span>
+        </button>
+        <button class="stat-card" type="button" data-nav="analytics" id="stat-mine">
+          <span class="stat-card__value" id="stat-mine-value">0</span>
+          <span class="stat-card__label">Your reports</span>
+          <span class="stat-card__hint">Posted by you</span>
+        </button>
+      </div>
+
+      <section class="card" aria-labelledby="dash-month-heading">
+        <div class="card__head">
+          <h2 class="title title--small" id="dash-month-heading">This month</h2>
+          <button class="link-btn" type="button" data-nav="analytics">Full analytics</button>
+        </div>
+        <p class="card__hint" id="dash-month-hint">Reports vs scans by day</p>
+        <div class="chart-legend" aria-hidden="true">
+          <span class="chart-legend__item chart-legend__item--reports">Reports</span>
+          <span class="chart-legend__item chart-legend__item--scans">Scans</span>
+        </div>
+        <div class="chart" id="dash-month-chart" role="img" aria-label="Monthly reports and scans chart"></div>
+        <p class="chart-empty" id="dash-month-empty" hidden>No reports or scans recorded this month yet.</p>
+      </section>
+
+      <!-- Only shown when something needs a decision -->
+      <section class="card card--flush" id="dash-attention-section" aria-labelledby="dash-attention-heading" hidden>
+        <div class="card__head">
+          <h2 class="title title--small" id="dash-attention-heading">Needs your attention</h2>
+        </div>
+        <ul class="attention-list" id="dash-attention"></ul>
+      </section>
+
+      <div class="dash-cols">
+        <section class="card card--flush" aria-labelledby="dash-live-heading">
+          <div class="card__head">
+            <h2 class="title title--small" id="dash-live-heading">Live right now</h2>
+            <button class="link-btn" type="button" data-nav="community">See all</button>
+          </div>
+          <div id="dash-live"></div>
+        </section>
+
+        <section class="card card--flush" aria-labelledby="dash-watch-heading">
+          <div class="card__head">
+            <h2 class="title title--small" id="dash-watch-heading">Hot contacts</h2>
+            <p class="card__hint">Numbers and sites people reported most. These do not expire.</p>
+          </div>
+          <div id="dash-watch"></div>
+        </section>
+      </div>
+
+      <section class="card card--flush" aria-labelledby="dash-last-heading">
+        <div class="card__head">
+          <h2 class="title title--small" id="dash-last-heading">Your last check</h2>
+          <button class="link-btn" type="button" data-nav="history">History</button>
+        </div>
+        <div id="dash-last"></div>
+      </section>
+    </section>
+
+    <!-- ============ CHECK ============ -->
+    <section class="view" id="view-check" hidden aria-labelledby="check-heading">
+      <header class="page-header">
+        <p class="page-header__eyebrow">Protect</p>
+        <h1 class="title" id="check-heading" tabindex="-1">Scam Scanner</h1>
+        <p class="subtitle" id="check-help">Paste a message. The check runs on this device — nothing is sent away.</p>
+      </header>
+
+      <div class="field">
+        <label class="label" for="message">The message</label>
+        <textarea class="input paste" id="message" rows="8" spellcheck="false"
+                  placeholder="Paste the full message here, including the sender's name and any link."
+                  aria-describedby="check-help message-error"></textarea>
+        <span class="field-error" id="message-error" role="alert"></span>
+      </div>
+
+      <!-- ---------- drop zone ---------- -->
+      <div class="drop" id="scan-drop-zone" tabindex="0" role="button"
+           aria-label="Attach a screenshot, photo or PDF"
+           aria-describedby="scan-drop-help">
+        <svg class="drop__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 16.5V4.8m0 0L8 8.8m4-4 4 4"/>
+          <path d="M4.5 15.5v2.2A2.8 2.8 0 0 0 7.3 20.5h9.4a2.8 2.8 0 0 0 2.8-2.8v-2.2"/>
+        </svg>
+        <p class="drop__title">Drop a screenshot, photo or PDF here</p>
+        <p class="drop__hint" id="scan-drop-help">
+          or <span class="drop__link">choose files</span> · up to 3 files, 5MB each
+        </p>
+        <div class="drop__progress" aria-hidden="true"><span class="drop__progress-bar"></span></div>
+        <p class="drop__upload-label">Preparing your file</p>
+        <input class="sr-only" type="file" id="scan-file-input" multiple
+               accept="image/png,image/jpeg,image/webp,image/gif,application/pdf">
+      </div>
+
+      <ul class="thumbs" id="scan-thumbs" aria-label="Attached files"></ul>
+      <p class="field-error" id="scan-file-error" role="alert"></p>
+      <p class="drop__note" id="scan-drop-note">
+        The scan reads the pasted text only. Files you drop here are kept as evidence and go with
+        the message if you post it to the community.
+      </p>
+
+      <div class="check-actions" id="check-actions">
+        <button class="btn" type="button" id="run-check">Scan this message</button>
+        <button class="btn-ghost btn-ghost--quiet" type="button" id="paste-clipboard">Paste from clipboard</button>
+      </div>
+
+      <div class="scan-busy" id="scan-busy" hidden role="status" aria-live="assertive" aria-busy="false">
+        <div class="scan-busy__stage" aria-hidden="true">
+          <svg class="scan-busy__shield" viewBox="0 0 64 72" focusable="false">
+            <path class="scan-busy__outline" d="M32 4 8 14v22c0 18 10.5 32 24 36 13.5-4 24-18 24-36V14L32 4Z"/>
+            <path class="scan-busy__tick" d="m22 36 7 7 14-16"/>
+          </svg>
+          <span class="scan-busy__beam"></span>
+        </div>
+        <p class="scan-busy__label" id="scan-busy-label">Scanning the message</p>
+        <p class="scan-busy__tip" id="scan-busy-tip">Looking for fee asks and fake learnerships</p>
+        <div class="scan-busy__dots" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RESULT ============ -->
+    <section class="view" id="view-result" hidden aria-labelledby="result-heading">
+      <button class="back-link" type="button" data-nav="check">
+        <svg class="back-link__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M14.5 5.5 8 12l6.5 6.5"/>
+        </svg>
+        Scan another message
+      </button>
+
+      <div class="verdict" id="verdict">
+        <span class="risk" id="risk-badge">
+          <svg class="risk__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" id="risk-icon">
+            <circle cx="12" cy="12" r="8.5"/>
+          </svg>
+          <span id="risk-level">LOW RISK</span>
+        </span>
+        <h1 class="verdict__headline" id="result-heading" tabindex="-1"></h1>
+        <p class="verdict__summary" id="verdict-summary"></p>
+      </div>
+
+      <section class="block" id="signals-block">
+        <h2 class="block__title">Why we flagged this</h2>
+        <ul class="signals" id="signals"></ul>
+      </section>
+
+      <section class="block">
+        <h2 class="block__title">What to do next</h2>
+        <ol class="steps" id="next-steps"></ol>
+      </section>
+
+      <section class="block">
+        <h2 class="block__title">Has anyone else reported this?</h2>
+        <p class="block__hint" id="community-match-note">Checking the community watchlist.</p>
+        <div id="community-matches"></div>
+        <button class="btn-ghost btn-ghost--quiet" type="button" id="share-to-community">
+          Post this to the community
+        </button>
+      </section>
+
+      <p class="honesty" id="honesty-note"></p>
+
+      <section class="block block--feedback">
+        <h2 class="block__title">Was this result right?</h2>
+        <p class="block__hint">
+          Your answer is saved on this device so the rules can be tuned later. It is not sent anywhere yet.
+        </p>
+        <div class="feedback" role="group" aria-label="Feedback on this result">
+          <button class="fb" type="button" data-fb="scam" aria-pressed="false">It was a scam</button>
+          <button class="fb" type="button" data-fb="legit" aria-pressed="false">It was legitimate</button>
+          <button class="fb" type="button" data-fb="wrong" aria-pressed="false">Wrong result</button>
+        </div>
+        <div class="feedback-note" id="feedback-note" hidden>
+          <label class="label" for="feedback-text">What actually happened? (optional)</label>
+          <textarea class="input paste paste--short" id="feedback-text" rows="3" spellcheck="true"
+                    placeholder="This helps improve the checks later."></textarea>
+          <button class="btn btn--small" type="button" id="save-feedback">Save note</button>
+        </div>
+        <p class="feedback-thanks" id="feedback-thanks" hidden>Thank you. That has been recorded on this device.</p>
+      </section>
+
+      <div class="result-actions">
+        <button class="btn btn--small" type="button" id="share-result">
+          <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="17.5" cy="6" r="2.8"/>
+            <circle cx="6.5" cy="12" r="2.8"/>
+            <circle cx="17.5" cy="18" r="2.8"/>
+            <path d="m9 10.8 6-3.4M9 13.2l6 3.4"/>
+          </svg>
+          <span id="share-label">Share this result</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============ COMMUNITY ============ -->
+    <section class="view" id="view-community" hidden aria-labelledby="community-heading">
+      <header class="page-header">
+        <p class="page-header__eyebrow">Reports</p>
+        <h1 class="title" id="community-heading" tabindex="-1">Community</h1>
+        <p class="subtitle">What other job seekers say they were sent. Trust rises when people confirm a report.</p>
+      </header>
+
+      <p class="disclaimer" id="feed-disclaimer">
+        <strong>A report is a claim, not a verdict.</strong>
+        Anyone can post one. Reports rise as people confirm them.
+        Right now these reports stay on this device until a shared community server is connected.
+      </p>
+
+      <!-- ---------- composer (belongs with posting, not on the home screen) ---------- -->
+      <section class="card card--composer" aria-labelledby="composer-heading">
+        <h2 class="title title--small" id="composer-heading">Report a message</h2>
+        <p class="subtitle" id="composer-help">
+          Paste what you were sent and drop in a screenshot. We scan it with the same rules as the
+          scanner, then you say what happened. Nothing is published until you press post.
+        </p>
+
+        <div class="field">
+          <label class="label" for="post-message">The message you received</label>
+          <textarea class="input paste" id="post-message" rows="5" spellcheck="false"
+                    placeholder="Paste the full message, including the sender and any link."
+                    aria-describedby="composer-help post-message-error"></textarea>
+          <span class="field-error" id="post-message-error" role="alert"></span>
+        </div>
+
+        <div class="drop" id="drop-zone" tabindex="0" role="button"
+             aria-label="Attach a screenshot, photo or PDF"
+             aria-describedby="drop-help">
+          <svg class="drop__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 16.5V4.8m0 0L8 8.8m4-4 4 4"/>
+            <path d="M4.5 15.5v2.2A2.8 2.8 0 0 0 7.3 20.5h9.4a2.8 2.8 0 0 0 2.8-2.8v-2.2"/>
+          </svg>
+          <p class="drop__title">Drop a screenshot, photo or PDF here</p>
+          <p class="drop__hint" id="drop-help">
+            or <span class="drop__link">choose files</span> · up to 3 files, 5MB each
+          </p>
+          <div class="drop__progress" aria-hidden="true"><span class="drop__progress-bar"></span></div>
+          <p class="drop__upload-label">Preparing your file</p>
+          <input class="sr-only" type="file" id="file-input" multiple
+                 accept="image/png,image/jpeg,image/webp,image/gif,application/pdf">
+        </div>
+
+        <ul class="thumbs" id="thumbs" aria-label="Attached files"></ul>
+        <p class="field-error" id="file-error" role="alert"></p>
+
+        <div class="scan" id="post-scan" hidden>
+          <span class="risk" id="post-scan-badge">
+            <svg class="risk__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" id="post-scan-icon">
+              <circle cx="12" cy="12" r="8.5"/>
+            </svg>
+            <span id="post-scan-level">LOW RISK</span>
+          </span>
+          <p class="scan__note" id="post-scan-note"></p>
+        </div>
+
+        <div class="similar" id="post-similar" role="region" aria-label="Similar reports" hidden></div>
+
+        <fieldset class="labelset" id="label-set">
+          <legend class="label">What is this?</legend>
+          <div class="labels" id="labels" role="group" aria-label="Report type"></div>
+        </fieldset>
+
+        <div class="composer-actions">
+          <button class="btn" type="button" id="publish-post">Post to the community</button>
+          <p class="composer-note" id="post-status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <div class="filters" role="group" aria-label="Filter reports">
+        <button class="filter is-active" type="button" data-filter="live" aria-pressed="true">Live</button>
+        <button class="filter" type="button" data-filter="all" aria-pressed="false">All</button>
+        <button class="filter" type="button" data-filter="mine" aria-pressed="false">Mine</button>
+        <button class="filter" type="button" data-filter="watch" aria-pressed="false">Watchlist</button>
+      </div>
+
+      <div id="feed" role="feed" aria-label="Community report list"></div>
+    </section>
+
+    <!-- ============ POST DETAIL ============ -->
+    <section class="view" id="view-post" hidden aria-labelledby="post-detail-heading">
+      <button class="back-link" type="button" data-nav="community">
+        <svg class="back-link__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M14.5 5.5 8 12l6.5 6.5"/>
+        </svg>
+        Back to community
+      </button>
+      <h1 class="sr-only" id="post-detail-heading" tabindex="-1">Report detail</h1>
+      <div id="post-detail"></div>
+    </section>
+
+    <!-- ============ HISTORY ============ -->
+    <section class="view" id="view-history" hidden aria-labelledby="history-heading">
+      <header class="page-header">
+        <p class="page-header__eyebrow">Archive</p>
+        <h1 class="title" id="history-heading" tabindex="-1">History</h1>
+        <p class="subtitle">Saved checks on this device. Open one to review, or delete it.</p>
+      </header>
+      <div id="history-list"></div>
+    </section>
+
+    <!-- ============ WORK STATION ============ -->
+    <section class="view" id="view-workstation" hidden aria-labelledby="workstation-heading">
+      <!-- Mounted by workstation.js -->
+    </section>
+
+    <!-- ============ ANALYTICS ============ -->
+    <section class="view" id="view-analytics" hidden aria-labelledby="analytics-heading">
+      <header class="page-header">
+        <p class="page-header__eyebrow">Insights</p>
+        <h1 class="title" id="analytics-heading" tabindex="-1">Analytics</h1>
+        <p class="subtitle">Deeper view of reports, scans, provinces, and what the community is seeing.</p>
+      </header>
+
+      <div class="stat-grid stat-grid--analytics" aria-label="Analytics summary">
+        <div class="stat-card stat-card--static">
+          <span class="stat-card__value" id="an-reports-value">0</span>
+          <span class="stat-card__label">Scams reported</span>
+          <span class="stat-card__hint">All community reports</span>
+        </div>
+        <div class="stat-card stat-card--static">
+          <span class="stat-card__value" id="an-scans-value">0</span>
+          <span class="stat-card__label">Messages scanned</span>
+          <span class="stat-card__hint">Saved on this device</span>
+        </div>
+        <div class="stat-card stat-card--static">
+          <span class="stat-card__value" id="an-live-value">0</span>
+          <span class="stat-card__label">Live alerts</span>
+          <span class="stat-card__hint">Last 72 hours</span>
+        </div>
+        <div class="stat-card stat-card--static">
+          <span class="stat-card__value" id="an-mine-value">0</span>
+          <span class="stat-card__label">Your reports</span>
+          <span class="stat-card__hint">Posted by you</span>
+        </div>
+      </div>
+
+      <section class="card" aria-labelledby="an-month-heading">
+        <div class="card__head">
+          <h2 class="title title--small" id="an-month-heading">This month</h2>
+          <p class="card__hint" id="an-month-hint">Reports vs scans by day</p>
+        </div>
+        <div class="chart-legend" aria-hidden="true">
+          <span class="chart-legend__item chart-legend__item--reports">Reports</span>
+          <span class="chart-legend__item chart-legend__item--scans">Scans</span>
+        </div>
+        <div class="chart" id="an-month-chart" role="img" aria-label="Monthly reports and scans chart"></div>
+        <p class="chart-empty" id="an-month-empty" hidden>No reports or scans recorded this month yet.</p>
+      </section>
+
+      <div class="analytics-cols">
+        <section class="card" aria-labelledby="an-province-heading">
+          <div class="card__head">
+            <h2 class="title title--small" id="an-province-heading">Reports by province</h2>
+            <p class="card__hint">Based on reporters’ province</p>
+          </div>
+          <div id="an-province-list"></div>
+        </section>
+
+        <section class="card" aria-labelledby="an-trend-heading">
+          <div class="card__head">
+            <h2 class="title title--small" id="an-trend-heading">Trending now</h2>
+            <p class="card__hint">Patterns from community reports</p>
+          </div>
+          <div id="an-trends"></div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ============ SETTINGS ============ -->
+    <section class="view" id="view-settings" hidden aria-labelledby="settings-heading">
+      <header class="page-header">
+        <p class="page-header__eyebrow">Account</p>
+        <h1 class="title" id="settings-heading" tabindex="-1">Settings</h1>
+        <p class="subtitle">Profile, password, and data stored only in this browser.</p>
+      </header>
+
+      <div class="settings">
+
+        <section class="card" aria-labelledby="settings-account-heading">
+          <div class="card__head">
+            <h2 class="title title--small" id="settings-account-heading">
+              <svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.2"/><path d="M5 19.5c0-3.2 3-5.2 7-5.2s7 2 7 5.2"/></svg>
+              Your account
+            </h2>
+          </div>
+          <p class="card__hint">Used to label the reports you post. Other people see your first name and last initial only.</p>
+
+          <form id="settings-profile-form" novalidate>
+            <div class="field">
+              <label class="label" for="set-name">Full name</label>
+              <input class="input" id="set-name" name="fullName" type="text" autocomplete="name"
+                     aria-describedby="set-name-error">
+              <p class="field-error" id="set-name-error" role="alert"></p>
+            </div>
+
+            <div class="field">
+              <label class="label" for="set-email">Email</label>
+              <input class="input" id="set-email" name="email" type="email" autocomplete="email"
+                     aria-describedby="set-email-error">
+              <p class="field-error" id="set-email-error" role="alert"></p>
+            </div>
+
+            <div class="field">
+              <label class="label" for="set-phone">Phone <span class="field__optional">optional</span></label>
+              <input class="input" id="set-phone" name="phone" type="tel" autocomplete="tel"
+                     aria-describedby="set-phone-error">
+              <p class="field-error" id="set-phone-error" role="alert"></p>
+            </div>
+
+            <div class="field">
+              <label class="label" for="set-province">Province <span class="field__optional">optional</span></label>
+              <span class="select-wrap">
+                <select class="input select" id="set-province" name="province"
+                        aria-describedby="set-province-hint set-province-error">
+                  <option value="">Not set</option>
+                  <option value="Eastern Cape">Eastern Cape</option>
+                  <option value="Free State">Free State</option>
+                  <option value="Gauteng">Gauteng</option>
+                  <option value="KwaZulu-Natal">KwaZulu-Natal</option>
+                  <option value="Limpopo">Limpopo</option>
+                  <option value="Mpumalanga">Mpumalanga</option>
+                  <option value="Northern Cape">Northern Cape</option>
+                  <option value="North West">North West</option>
+                  <option value="Western Cape">Western Cape</option>
+                </select>
+              </span>
+              <p class="field__hint" id="set-province-hint">Only used to label reports you post. Never shown to other people.</p>
+              <p class="field-error" id="set-province-error" role="alert"></p>
+            </div>
+
+            <div class="settings__actions">
+              <button class="btn btn--small" type="submit" id="save-profile">Save changes</button>
+              <p class="settings__status" id="profile-status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+        </section>
+
+        <section class="card" aria-labelledby="settings-password-heading">
+          <div class="card__head">
+            <h2 class="title title--small" id="settings-password-heading">
+              <svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8.5 11V8a3.5 3.5 0 0 1 7 0v3"/></svg>
+              Password
+            </h2>
+          </div>
+          <p class="card__hint">Changing it needs your current password, so an unlocked device cannot lock you out.</p>
+
+          <form id="settings-password-form" novalidate>
+            <div class="field">
+              <label class="label" for="set-current-password">Current password</label>
+              <input class="input" id="set-current-password" name="currentPassword" type="password"
+                     autocomplete="current-password" aria-describedby="set-current-password-error">
+              <p class="field-error" id="set-current-password-error" role="alert"></p>
+            </div>
+
+            <div class="field">
+              <label class="label" for="set-new-password">New password</label>
+              <input class="input" id="set-new-password" name="newPassword" type="password"
+                     autocomplete="new-password" aria-describedby="set-new-password-error set-new-password-rules">
+              <p class="field-error" id="set-new-password-error" role="alert"></p>
+              <ul class="pw-rules" id="set-new-password-rules">
+                <li data-rule="length">
+                  <svg class="pw-rule-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                    <circle class="pw-rule-ring" cx="8" cy="8" r="5.5"/>
+                    <path class="pw-rule-tick" d="m5.2 8.2 2 2 3.6-4"/>
+                  </svg>
+                  8+ characters
+                </li>
+                <li data-rule="upper">
+                  <svg class="pw-rule-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                    <circle class="pw-rule-ring" cx="8" cy="8" r="5.5"/>
+                    <path class="pw-rule-tick" d="m5.2 8.2 2 2 3.6-4"/>
+                  </svg>
+                  1 uppercase
+                </li>
+                <li data-rule="number">
+                  <svg class="pw-rule-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                    <circle class="pw-rule-ring" cx="8" cy="8" r="5.5"/>
+                    <path class="pw-rule-tick" d="m5.2 8.2 2 2 3.6-4"/>
+                  </svg>
+                  1 number
+                </li>
+                <li data-rule="symbol">
+                  <svg class="pw-rule-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                    <circle class="pw-rule-ring" cx="8" cy="8" r="5.5"/>
+                    <path class="pw-rule-tick" d="m5.2 8.2 2 2 3.6-4"/>
+                  </svg>
+                  1 symbol
+                </li>
+              </ul>
+            </div>
+
+            <div class="field">
+              <label class="label" for="set-confirm-password">Repeat new password</label>
+              <input class="input" id="set-confirm-password" name="confirmPassword" type="password"
+                     autocomplete="new-password" aria-describedby="set-confirm-password-error">
+              <p class="field-error" id="set-confirm-password-error" role="alert"></p>
+            </div>
+
+            <div class="settings__actions">
+              <button class="btn btn--small" type="submit" id="save-password">Change password</button>
+              <p class="settings__status" id="password-status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+        </section>
+
+        <section class="card" aria-labelledby="settings-display-heading">
+          <div class="card__head">
+            <h2 class="title title--small" id="settings-display-heading">
+              <svg class="title-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="13" rx="1.5"/><path d="M8 20h8"/></svg>
+              Display
+            </h2>
+          </div>
+          <p class="card__hint">Comfort settings for this device.</p>
+
+          <div class="toggle-row">
+            <label class="toggle">
+              <input type="checkbox" id="set-reduce-motion">
+              <span>Reduce motion</span>
+            </label>
+            <p class="toggle__note">Turns off transitions and the drawer slide.</p>
+          </div>
+
+          <div class="toggle-row">
+            <label class="toggle">
+              <input type="checkbox" id="set-larger-text">
+              <span>Larger text</span>
+            </label>
+            <p class="toggle__note">Increases the base text size across the app.</p>
+          </div>
+
+          <p class="settings__status" id="display-status" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="card" aria-labelledby="settings-privacy-heading">
+          <div class="card__head">
+            <h2 class="title title--small" id="settings-privacy-heading">What this app stores</h2>
+          </div>
+          <ul class="privacy-list">
+            <li><strong>Your account</strong>: name, email and optional phone, in this browser's storage.</li>
+            <li><strong>Your password</strong>: as a salted hash, never as the words you typed.</li>
+            <li><strong>Your checks</strong>: every message you scanned, so History can reopen it.</li>
+            <li><strong>Your reports and votes</strong>: part of the community record other people rely on.</li>
+            <li><strong>Attachments you added</strong>: images and documents, with image metadata stripped.</li>
+          </ul>
+          <p class="card__hint">
+            None of it is sent anywhere. There is no server behind this build, which also means
+            clearing your browser data erases it and nobody can recover it for you.
+          </p>
+        </section>
+
+        <section class="card" aria-labelledby="settings-data-heading">
+          <div class="card__head">
+            <h2 class="title title--small" id="settings-data-heading">Your data</h2>
+          </div>
+          <p class="card__hint">These cannot be undone.</p>
+
+          <div class="danger-row">
+            <div>
+              <p class="danger-row__label">Delete your saved checks</p>
+              <p class="danger-row__note">Clears your History. Community reports are not affected.</p>
+            </div>
+            <button class="btn-ghost btn-ghost--quiet" type="button" id="clear-checks">Delete checks</button>
+          </div>
+
+          <div class="danger-row">
+            <div>
+              <p class="danger-row__label">Delete your reports</p>
+              <p class="danger-row__note" id="delete-reports-note">Removes the reports you posted. Nobody else's are touched.</p>
+            </div>
+            <button class="btn-ghost" type="button" id="delete-my-reports">Delete my reports</button>
+          </div>
+
+          <div class="danger-row">
+            <div>
+              <p class="danger-row__label">Remove this account</p>
+              <p class="danger-row__note">Signs you out and deletes your account record from this browser.</p>
+            </div>
+            <button class="btn-ghost" type="button" id="remove-account">Remove account</button>
+          </div>
+
+          <p class="settings__status" id="data-status" role="status" aria-live="polite"></p>
+        </section>
+
+      </div>
+    </section>
+
+    <p class="sr-only" id="app-status" role="status" aria-live="polite"></p>
+
+    <footer class="app-foot">
+      <p>Rule-based checks and community reports. Neither is a background check, and neither can confirm that an employer exists.</p>
+    </footer>
+  </main>
+  </div>
+
+<script src="rules.js"></script>
+<script src="account.js"></script>
+<script src="api.js"></script>
+  <script src="community.js"></script>
+  <script src="similarity.js"></script>
+  <script src="workstation-mock.js"></script>
+  <script src="workstation-api.js"></script>
+  <script src="workstation.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

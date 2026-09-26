@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Job Scam Shield">
+  <defs>
+    <linearGradient id="jss-shield" x1="18" y1="6" x2="46" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="45%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#0B2F6B"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#jss-shield)" d="M32 4.5 10 13.2v16.4c0 14.2 9.2 26.4 22 30.4 12.8-4 22-16.2 22-30.4V13.2L32 4.5Z"/>
+  <path fill="none" stroke="#FFFFFF" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" d="m21.5 31.8 7.2 7.2 14.3-15.2"/>
+</svg>
